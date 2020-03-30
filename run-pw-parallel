@@ -1,0 +1,16 @@
+#!/bin/sh
+#SBATCH --account=edu
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=4
+#SBATCH --time=6:00:00
+#SBATCH --mem-per-cpu=4gb
+#SBATCH --threads-per-core=1
+#SBATCH --output=pw.out
+#SBATCH --error=errors.out
+
+module load intel-parallel-studio/2019
+ulimit -s unlimited
+
+mpiexec  /rigel/home/au2229/CHENE4880/bin/pw.x < pw.in
+/rigel/home/au2229/CHENE4880/bin/pwo2xsf.sh -ic pw.out > initial_structure.xsf
+/rigel/home/au2229/CHENE4880/bin/pwo2xsf.sh -lc pw.out > final_structure.xsf

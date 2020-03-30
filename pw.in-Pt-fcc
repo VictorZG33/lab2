@@ -1,0 +1,36 @@
+&control
+  calculation  = 'scf'
+  restart_mode = 'from_scratch'
+  prefix       = 'Pt-fcc'
+  pseudo_dir   = '/rigel/home/au2229/CHENE4880/pp/'
+  outdir       = '.'
+/
+
+&system
+  nat         =   4
+  ntyp        =   1
+  ibrav       =   1
+  a           =   3.912
+  ecutwfc     =  10
+  ecutrho     =  50
+  occupations = 'smearing'
+  smearing    = 'gauss'
+  degauss     =  0.001
+/
+
+&electrons
+  electron_maxstep = 100
+  conv_thr         =   1.0e-5
+/
+
+ATOMIC_SPECIES
+Pt 195.084 pt_pbe_v1.4.uspp.F.UPF
+
+ATOMIC_POSITIONS (crystal)
+Pt  0.0 0.0 0.0
+Pt  0.0 0.5 0.5
+Pt  0.5 0.0 0.5
+Pt  0.5 0.5 0.0
+
+K_POINTS automatic
+ 10 10 10   0 0 0
